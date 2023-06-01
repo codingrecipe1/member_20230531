@@ -45,6 +45,18 @@ public class MemberService {
         memberRepository.findByMemberEmailAndMemberPassword(memberDTO.getMemberEmail(), memberDTO.getMemberPassword())
                         .orElseThrow(() -> new NoSuchElementException("이메일 또는 비밀번호가 틀립니다"));
     }
+
+    public MemberDTO findById(Long id) {
+        MemberEntity memberEntity = memberRepository.findById(id).orElseThrow(() -> new NoSuchElementException());
+        return MemberDTO.toDTO(memberEntity);
+//        Optional<MemberEntity> optionalMemberEntity = memberRepository.findById(id);
+//        if (optionalMemberEntity.isPresent()) {
+//            MemberEntity memberEntity = optionalMemberEntity.get();
+//            return MemberDTO.toDTO(memberEntity);
+//        } else {
+//            return null;
+//        }
+    }
 }
 
 

@@ -59,6 +59,12 @@ public class MemberController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/axios/{id}")
+    public ResponseEntity detailAxios(@PathVariable Long id) throws Exception {
+        MemberDTO memberDTO = memberService.findById(id);
+        return new ResponseEntity<>(memberDTO, HttpStatus.OK);
+    }
+
 }
 
 
